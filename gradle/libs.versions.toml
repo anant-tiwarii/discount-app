@@ -1,0 +1,83 @@
+[versions]
+jvm = "2.2.20"
+ktor = "3.1.2"
+reactor_core = "3.7.6"
+coroutines_reactor = "1.10.2"
+testcontainers = "1.20.6"
+mockk = "1.13.17"
+koin = "4.1.0"
+logback = "1.5.18"
+hikari = "5.1.0"
+postgres = "42.7.3"
+exposed = "0.50.1"
+kodein = "7.20.2"
+[libraries]
+ktor_server_core_jvm = { group = "io.ktor", name = "ktor-server-core-jvm", version.ref = "ktor" }
+ktor_server_netty_jvm = { group = "io.ktor", name = "ktor-server-netty-jvm", version.ref = "ktor" }
+ktor_server_host_common_jvm = { group = "io.ktor", name = "ktor-server-host-common-jvm", version.ref = "ktor" }
+ktor_server_test_host = { group = "io.ktor", name = "ktor-server-test-host-jvm", version.ref = "ktor" }
+ktor_serialization_kotlinx_json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor_client_okhttp = { group = "io.ktor", name = "ktor-client-okhttp-jvm", version.ref = "ktor" }
+ktor_client_core = { group = "io.ktor", name = "ktor-client-core-jvm", version.ref = "ktor" }
+ktor_client_content_negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+reactor_core = { group = "io.projectreactor", name = "reactor-core", version.ref = "reactor_core" }
+kotlinx_coroutines_reactor = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-reactor", version.ref = "coroutines_reactor" }
+kotlinx_coroutines_test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test-jvm", version.ref = "coroutines_reactor" }
+reactor_test = { group = "io.projectreactor", name = "reactor-test", version.ref = "reactor_core" }
+testcontainer_kafka = { group = "org.testcontainers", name = "kafka", version.ref = "testcontainers" }
+testcontainer_mongo = { group = "org.testcontainers", name = "mongodb", version.ref = "testcontainers" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+koin_ktor = { group = "io.insert-koin", name = "koin-ktor", version.ref = "koin" }
+koin_core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+logback_core = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback" }
+ktor_call_logging = { group = "io.ktor", name = "ktor-server-call-logging-jvm", version.ref = "ktor" }
+ktor_content_negotiation = { group = "io.ktor", name = "ktor-server-content-negotiation-jvm", version.ref = "ktor" }
+ktor_jackson = { group = "io.ktor", name = "ktor-serialization-jackson-jvm", version.ref = "ktor" }
+hikari = { group = "com.zaxxer", name = "HikariCP", version.ref = "hikari" }
+postgresql = { group = "org.postgresql", name = "postgresql", version.ref = "postgres" }
+exposed-core = { group = "org.jetbrains.exposed", name = "exposed-core", version.ref = "exposed" }
+exposed-dao = { group = "org.jetbrains.exposed", name = "exposed-dao", version.ref = "exposed" }
+exposed-jdbc = { group = "org.jetbrains.exposed", name = "exposed-jdbc", version.ref = "exposed" }
+kodein_di = { group = "org.kodein.di", name = "kodein-di", version.ref = "kodein" }
+kodein_di_framework_ktor = { group = "org.kodein.di", name = "kodein-di-framework-ktor-server-jvm", version.ref = "kodein" }
+[bundles]
+common = [
+    "reactor_core",
+    "kotlinx_coroutines_reactor",
+    "koin_ktor",
+    "koin_core",
+    "logback_core",
+    "kodein_di",
+    "kodein_di_framework_ktor"
+]
+ktor-server = [
+    "ktor_server_core_jvm",
+    "ktor_server_netty_jvm",
+    "ktor_server_host_common_jvm",
+    "ktor_serialization_kotlinx_json",
+    "ktor_content_negotiation",
+    "ktor_jackson",
+    "ktor_call_logging"
+]
+ktor-client = [
+    "ktor_client_core",
+    "ktor_client_okhttp",
+    "ktor_client_content_negotiation",
+]
+database = [
+    "hikari",
+    "postgresql",
+    "exposed-core",
+    "exposed-dao",
+    "exposed-jdbc"
+]
+ktor-test = [
+    "reactor_test",
+    "kotlinx_coroutines_test",
+    "ktor_server_test_host",
+    "testcontainer_kafka",
+    "testcontainer_mongo",
+    "mockk"
+]
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jvm" }

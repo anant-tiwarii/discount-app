@@ -1,0 +1,9 @@
+package io.nexure.discount.service
+
+import org.kodein.di.DI
+import org.kodein.di.bindSingleton
+import org.kodein.di.instance
+
+val serviceModule = DI.Module("service_module") {
+    bindSingleton { ProductService(instance()) }
+}
